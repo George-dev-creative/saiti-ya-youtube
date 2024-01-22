@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="Grid.css">
+    <title>GPT Youtube.com/Clone</title>
+    <style>
+        body{
+        padding-top: 80px;
+        padding-left: 50px;
+        background-color: #fffcfc;
+        z-index: 10;
+        }
+        .header-flex{
+        height: 75px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        position: fixed;
+        z-index: 100;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        border-bottom-style: solid;
+        border-bottom-color: rgb(170, 170, 170);
+        border-bottom-width: 1px;
+        }
+        .left-section{
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+        }
+        .left-section-svg1{
+        height: 20px;
+        margin-left: 24px;
+        margin-right: 24px;
+        }
+        .left-section-svg2{
+        height: 60px;
+        }
+    
+        .middle-section{
+            display: flex;
+            align-items: center;
+            flex: 1;
+            margin-right: 10px;
+            max-width: 500px;
+          
+        
+        }
+    
+        .search-bar{
+        flex: 1;
+        height: 36px;
+        padding-left: 10px;
+        font-size: 16px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgb(105, 93, 93);
+        border-radius: 2px;
+        box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.05);
+        width: 0;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-width: 0.5px;
+    
+        }
+        /* Apply styles when the search bar is in focus */
+.search-bar:focus {
+  border-color: #007bff; /* Set your desired border color */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle box shadow */
+  outline: none; /* Remove the default outline */
+}
+
+/* Apply styles when the search bar is active (clicked) */
+.search-bar:active {
+  border-color: #007bff; /* Set your desired border color */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle box shadow */
+  outline: none; /* Remove the default outline */
+}
+
+        .text-search-button{
+        height: 39px;
+        width: 66px;
+        background-color: rgb(240, 240, 240);
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgb(228, 221, 221);
+        margin-left: -1px;
+        margin-right: 10px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        }
+ .text-search-button .tool-tip{
+background-color: gray;
+color: #fff;
+position: absolute;
+padding: 4px 8px 4px 8px;
+border-radius: 2px;
+font-size: 12px;
+bottom: -30px;
+opacity: 0;
+transition: opacity 0.15s;
+pointer-events: none;
+}
+.voice-search-button .tool-tip{
+background-color: gray;
+color: #fff;
+position: absolute;
+padding: 4px 8px 4px 8px;
+border-radius: 2px;
+font-size: 12px;
+bottom: -30px;
+opacity: 0;
+transition: opacity 0.15s;
+pointer-events: none;
+}
+.text-search-button:hover .tool-tip{
+opacity: 1;}
+.voice-search-button:hover .tool-tip{
+opacity: 1;}
+
+
+        .search-bar::placeholder{
+        font-family: Roboto, Arial;
+        font-size: 16px;}
+    
+    
+        .text-search-icon{
+        height: 27px;
+    
+        }
+        .voice-search-button{
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        border: none;
+        background-color: rgb(245, 245, 245);
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        }
+    
+        .voice-search-icon{
+        height: 27px;
+ 
+    
+        }
+
+
+
+
+
+
+
+        .right-section{
+        width: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: 0px;
+        flex-shrink: 0;
+    
+        }
+        .video-upload{
+        height: 34px;
+        margin-right: 2px;
+        }
+        .youtube-apps-icon{
+        height: 24px;
+        margin-right: 2px;
+        }
+    .notifications-icon-container{
+        position: relative;
+        }
+        .notifications-count{
+        position: absolute;
+        top: -13px;
+        right: -7px;
+        background-color: red;
+        color: #fff;
+        font-family: Roboto, Arial;
+        font-size: 13px;
+        font-weight: normal;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-radius: 50%;
+        
+     
+        }
+
+.small-plus {
+position: absolute;
+top: -0.5em;
+right: -0.5em;
+font-size: 0.8em;
+line-height: 1;
+
+}
+
+
+
+
+.notifications-icon{
+padding: 0;
+margin: 0;
+height: 24px;
+margin-right: 2px;
+}
+.ytprofile-picture{
+width: 50px;
+border-radius: 50%;
+}
+
+
+    </style>
+    
+    <style>
+    
+
+        .video-grid {
+
+            object-fit: cover;
+            margin: 25px 15px 25px 218px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjusted grid columns */
+            column-gap: 16px;
+            row-gap: 40px;
+            max-width: 100%; /* Added max-width for responsiveness */
+            z-index: 50;
+        }
+.thumbnail-container{
+position: relative;
+}
+.video-time{
+background-color: rgba(0, 0, 0, 0.7);
+color: white;
+position: absolute;
+font-family: Roboto, Arial;
+font-size: 12px;
+font-weight: 500;
+right: 6px;
+bottom: 10px;
+padding: 4px;
+border-radius: 8px;
+
+}
+        .thumbnail {
+            width: 100%;
+            object-fit: inherit;
+        }
+
+        .video-info {
+            display: grid;
+            grid-template-columns: 50px 1fr;
+            column-gap: 5px;
+            max-width: 100%;
+        }
+
+        .profile-picture {
+            width: 50px;
+            border-radius: 50%;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-family: Roboto, Arial, Helvetica, sans-serif;
+        }
+
+        .video-title {
+            margin-top: 0;
+            font-size: 19px; /* Added px to the font-size property */
+            font-weight: 500;
+            line-height: 24px;
+            margin-bottom: 10px;
+        }
+
+        .author, .view-data {
+            font-size: 14px;
+            color: rgb(96, 96, 96);
+        }
+
+        .author {
+            margin-bottom: 12px;
+        }
+
+        i {
+            margin-left: 5px;
+        }
+
+        .view-data {}
+.bignewspic1cap1{
+    margin-top: 0;
+            font-size: 19px; /* Added px to the font-size property */
+            font-weight: 500;
+            line-height: 24px;
+            margin-bottom: 10px;
+            font-family: Roboto, Arial, Helvetica, sans-serif;
+            font-weight: 500;
+   
+    
+}
+.bignewspic1cap2{
+    margin-top: 0;
+            font-size: 19px; /* Added px to the font-size property */
+            font-weight: 500;
+            line-height: 24px;
+            margin-bottom: 10px;
+}
+.bignewspic1cap3 .fa{
+    margin: 6px;    
+    }
+.bignewspic1cap3{
+font-size: 22px;
+margin-top: 0;
+            font-size: 19px; /* Added px to the font-size property */
+            font-weight: 500;
+            line-height: 24px;
+            margin-bottom: 10px;
+
+    }
+    .BREAKING{
+        background-color: red;
+        color: yellow;
+
+    }
+    #fake-news{
+        width: 0px;
+            border-radius: 50%;
+        background-color: rgb(173, 22, 22);
+    }
+   
+
+    </style>
+    
+    <style>
+.side-bar{
+width: 217px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: flex-start;
+font-family: Roboto, Arial;
+position: fixed;
+z-index: 100;
+top: 75px;
+left: 0;
+bottom: 0;
+overflow-y: scroll;
+
+}
+.sidebar-part1, .sidebar-part2, .sidebar-part3, .sidebar-part4, .sidebar-part5{
+padding: 3px;
+width: 90%;
+margin-bottom: 26px;
+margin-top: 10px;
+}
+.sidebar-part1, .sidebar-part2, .sidebar-part3, .sidebar-part4, .sidebar-part5, .sidebar-part6{
+border-bottom-style: solid;
+border-bottom-color:  rgb(194, 177, 177);
+border-bottom-width: 0.5px;
+}
+
+
+
+
+.side-bar-link{
+display: flex;
+align-items: center;
+justify-content: space-between;
+max-width: 100%;
+margin-top: 5px;
+padding: 2px 3px 2px 3px;
+margin-bottom: 10px;
+
+}
+.side-bar-link:hover{
+background-color: #e0d2d2;
+padding: 2px auto 2px 5px;
+border-radius: 10px;
+}
+.sidebar-icons-container{
+width: 26px;
+}
+.side-bar-name{
+flex: 1;
+padding-left: 15px;
+}
+.sidebar-icons{
+height: 24px;
+
+}
+.subscriptions{
+font-weight: 500;
+}
+#chan-icon{
+    border-radius: 50%;
+
+}
+#arrow-right, #arrow-left{
+width: 12px;
+}
+#arrow-right{
+flex: 1;
+
+}
+#arrow-left{
+
+}
+.press-contact, .terms, .copyright-company-year{
+margin-bottom: 8px;
+padding-left: 15px;
+max-width: 100%;
+text-wrap: wrap;
+font-size: 14px;
+color: rgb(96, 96, 96);
+margin-right: 3px;
+
+}
+.terms{
+}
+.copyright-company-year{
+
+}
+
+    </style>
+</head>
+<body>
+    <div class="header-flex">
+        <div class="left-section">
+            <img src="images and logos/hamburger icon selfmade.svg" alt="ham" class="left-section-svg1">
+            <img src="images and logos/youtube-667451.svg" alt="yt" id class="left-section-svg2">   
+        </div>
+        <div class="middle-section">
+            <input type="text" class="search-bar" placeholder="Tafuta">
+                <button  class="text-search-button">
+                        <img src="images and logos/magnifying-glass-1976105.svg" alt="pic" class="text-search-icon">
+                        <div class="tool-tip">Search</div>     
+                </button">
+                
+            <button class="voice-search-button">
+                <img src="images and logos/mic-1418319 (1).svg" alt="pic" class="voice-search-icon">
+                <div class="tool-tip">Search with your voice</div>
+            </button>
+          
+        </div>
+        <div class="right-section">
+            <img src="images and logos/video-7207893.svg" alt="video-upload-icon" class="video-upload">
+            <img src="images and logos/header-menu.svg" alt="apps" class="youtube-apps-icon">
+            <div class="notifications-icon-container">
+                <img src="images and logos/bell-jar-1096279.svg" alt="insta" class="notifications-icon">
+                <div class="notifications-count" id="myCounter">15</div>
+          </div>
+            <img src="images and logos/masha-profile-pic.jpg" alt="profile" class="ytprofile-picture">
+        </div>
+    </div>
+    <div class="side-bar">
+        <div class="sidebar-part1">
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/home-6133.svg" alt="home_icon" class="sidebar-icons"></div> 
+                <div class="side-bar-name">Home</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/youtube-shorts-logo-15252.svg" alt="shorts_icon" class="sidebar-icons"></div> 
+                <div class="side-bar-name">Shorts</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/youtube-videos-7639.svg" alt="videos_icon" class="sidebar-icons"></div> 
+                <div class="side-bar-name">Subscriptions</div>
+            </div>
+        </div>
+        <div class="sidebar-part2">
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container">You</div> 
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/arrow-right-3098.svg" alt="user_icon" class="sidebar-icons" id="arrow-right"></div> 
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/user-4250.svg" alt="user_icon" class="sidebar-icons"></div> 
+                <div class="side-bar-name">Your Channel</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/history-7610.svg" alt="history_icon" class="sidebar-icons"></div> 
+                <div class="side-bar-name">History</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/your videos.svg" alt="your_videos_icon" class="sidebar-icons"></div> 
+                <div class="side-bar-name">Your videos</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/time-2622.svg" alt="time_icon" class="sidebar-icons"></div> 
+                <div class="side-bar-name">Watch later</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/thumbs-up-11228.svg" alt="thum_up_icon" class="sidebar-icons"></div> 
+                <div class="side-bar-name">Liked videos</div>
+            </div>
+        </div>
+        <div class="sidebar-part3">
+            <div class="subscriptions">Subscriptions</div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/masha.jpg" alt="chan_icon" class="sidebar-icons" id="chan-icon"></div> 
+                <div class="side-bar-name">Masha and the...</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/earth-disc.jpg" alt="chan_icon" class="sidebar-icons" id="chan-icon"></div> 
+                <div class="side-bar-name">Earth Discovery Ch...</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/debby wambo.jpg" alt="chan_icon" class="sidebar-icons" id="chan-icon"></div> 
+                <div class="side-bar-name">Debby Wambo</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/african muwala.jpg" alt="chan_icon" class="sidebar-icons" id="chan-icon"></div> 
+                <div class="side-bar-name">African Muwala</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/African Nyako.jpg" alt="chan_icon" class="sidebar-icons" id="chan-icon"></div> 
+                <div class="side-bar-name">African Nyako</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/nichepurs.jpg" alt="chan_icon" class="sidebar-icons" id="chan-icon"></div> 
+                <div class="side-bar-name">Niche Pursuits</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/mwakazi adventures.jpg" alt="chan_icon" class="sidebar-icons" id="chan-icon"></div> 
+                <div class="side-bar-name">Mwakazi Adventures</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/arrow-down-3101.svg" alt="user_icon" class="sidebar-icons" id="arrow-left"></div> 
+                <div class="side-bar-name">Show 11 more</div>
+            </div>
+        </div> 
+        <div class="sidebar-part4">
+            <div class="subscriptions">Explore</div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/fire-5618.svg" alt="trending_icon" class="sidebar-icons" id="sidebar-icons"></div> 
+                <div class="side-bar-name">Trending</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/music-note-10179.svg" alt="trending_icon" class="sidebar-icons"></div> 
+                <div class="side-bar-name">Music</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/gaming-console-black-outline-20046.svg" alt="trending_icon" class="sidebar-icons"></div> 
+                <div class="side-bar-name">Gaming</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/winner-cup-7821.svg" alt="trending_icon" class="sidebar-icons"></div> 
+                <div class="side-bar-name">Sport</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/radio-microphone-14658.svg" alt="trending_icon" class="sidebar-icons"></div> 
+                <div class="side-bar-name">Podcasts</div>
+            </div>
+        </div> 
+        <div class="sidebar-part4">
+            <div class="subscriptions">More from YouTube</div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/youtube-premiums.svg" alt="more_icon" class="sidebar-icons" id="sidebar-icons"></div> 
+                <div class="side-bar-name">YouTube Premium</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/youtube-hexagon-red-logo-20874.svg" alt="more_icon" class="sidebar-icons"></div> 
+                <div class="side-bar-name">YouTube Studio</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/play-button-4210.svg" alt="more_icon" class="sidebar-icons"></div> 
+                <div class="side-bar-name">YouTube Music</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/youtube-logo-kids-7129.svg" alt="more" class="sidebar-icons"></div> 
+                <div class="side-bar-name">YouTube Kids</div>
+            </div>
+        </div> 
+        <div class="sidebar-part5">
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/settings-5670.svg" alt="other_icon" class="sidebar-icons" id="sidebar-icons"></div> 
+                <div class="side-bar-name">Settings</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/start-flag-8253.svg" alt="other_icon" class="sidebar-icons"></div> 
+                <div class="side-bar-name">Report History</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/question-11798.svg" alt="other_icon" class="sidebar-icons"></div> 
+                <div class="side-bar-name">Help</div>
+            </div>
+            <div class="side-bar-link">
+                <div class="sidebar-icons-container"><img src="images and logos/sidebar-icons/message-4652.svg" alt="other_icon" class="sidebar-icons"></div> 
+                <div class="side-bar-name">Send feedback</div>
+            </div>
+        </div> 
+        <div class="side-bar-part6">
+            <div class="press-contact"><p>About  Press  Copyright  Contact us Creator  Advertise  Developers</p></div>
+            <div class="terms"><p>Terms  Privacy Policy & Safety  How YouTube works  Test new features</p></div>
+            <div class="copyright-company-year"><p>© 2024 Google LLC</p></div>
+        </div>  
+    </div>
+    <div class="video-grid">
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/masha and the bear thumb.webp" alt="thumbnail" class="thumbnail">
+                <div class="video-time">14:00</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/masha-profile-pic.jpg" alt="profile-picture" class="profile-picture">
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">Masha and the Bear 💖🐶 HUG YOUR PET 🐶💖 Best episodes collection</p>
+                    <p class="author">Macharia and The Bear<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">30M views &middot; 4 years ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/girl-16-9.jpg" alt="thumbnail" class="thumbnail">
+                <div class="video-time">12:00</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/web news.jpg" alt="profile-picture" class="profile-picture">
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">Growing up as a lesbian and transgender girl in the Philipines-My Story</p>
+                    <p class="author">My Philipines Story-hii ni story ya Jaba<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">309B views &middot; 2 hours ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/masha and the bear thumb.webp" alt="thumbnail" class="thumbnail">
+                <div class="video-time">6:40</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/masha-profile-pic.jpg" alt="profile-picture" class="profile-picture">
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">Watch your Favorite Cartoon Today</p>
+                    <p class="author">Masaa and The Bear<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">19M views &middot; 4 years ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/MONKEYS (1).png" alt="thumbnail" class="thumbnail">
+                <div class="video-time">14:00</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/news-prof.jpg" alt="profile-picture" class="profile-picture">
+                    
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">BREAKING NEWS!!!MONKEYS RAZE DOWN A VILLAGE IN WANJOHI. Several of them are admitted
+                        at JM KARIUKI...
+                    </p>
+                    <p class="author">NBC News<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">200M views &middot; 30 minutes ago</p>
+                </div>
+            </div>
+        </div> 
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/masha and the bear thumb.webp" alt="thumbnail" class="thumbnail">
+                <div class="video-time">14:00</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/masha-profile-pic.jpg" alt="profile-picture" class="profile-picture">
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">Masha and the Bear 💖🐶 HUG YOUR PET 🐶💖 Best episodes collection</p>
+                    <p class="author">Macharia and The Bear<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">30M views &middot; 4 years ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/girl-16-9.jpg" alt="thumbnail" class="thumbnail">
+                <div class="video-time">12:00</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/web news.jpg" alt="profile-picture" class="profile-picture">
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">Growing up as a lesbian and transgender girl in the Philipines-My Story</p>
+                    <p class="author">My Philipines Story-hii ni story ya Jaba<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">309B views &middot; 2 hours ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/masha and the bear thumb.webp" alt="thumbnail" class="thumbnail">
+                <div class="video-time">6:40</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/masha-profile-pic.jpg" alt="profile-picture" class="profile-picture">
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">Watch your Favorite Cartoon Today</p>
+                    <p class="author">Masaa and The Bear<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">19M views &middot; 4 years ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/MONKEYS (1).png" alt="thumbnail" class="thumbnail">
+                <div class="video-time">14:00</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/news-prof.jpg" alt="profile-picture" class="profile-picture">
+                    
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">BREAKING NEWS!!!MONKEYS RAZE DOWN A VILLAGE IN WANJOHI. Several of them are admitted
+                        at JM KARIUKI...
+                    </p>
+                    <p class="author">NBC News<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">200M views &middot; 30 minutes ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/masha and the bear thumb.webp" alt="thumbnail" class="thumbnail">
+                <div class="video-time">14:00</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/masha-profile-pic.jpg" alt="profile-picture" class="profile-picture">
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">Masha and the Bear 💖🐶 HUG YOUR PET 🐶💖 Best episodes collection</p>
+                    <p class="author">Macharia and The Bear<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">30M views &middot; 4 years ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/girl-16-9.jpg" alt="thumbnail" class="thumbnail">
+                <div class="video-time">12:00</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/web news.jpg" alt="profile-picture" class="profile-picture">
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">Growing up as a lesbian and transgender girl in the Philipines-My Story</p>
+                    <p class="author">My Philipines Story-hii ni story ya Jaba<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">309B views &middot; 2 hours ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/masha and the bear thumb.webp" alt="thumbnail" class="thumbnail">
+                <div class="video-time">6:40</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/masha-profile-pic.jpg" alt="profile-picture" class="profile-picture">
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">Watch your Favorite Cartoon Today</p>
+                    <p class="author">Masaa and The Bear<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">19M views &middot; 4 years ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/MONKEYS (1).png" alt="thumbnail" class="thumbnail">
+                <div class="video-time">14:00</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/news-prof.jpg" alt="profile-picture" class="profile-picture">
+                    
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">BREAKING NEWS!!!MONKEYS RAZE DOWN A VILLAGE IN WANJOHI. Several of them are admitted
+                        at JM KARIUKI...
+                    </p>
+                    <p class="author">NBC News<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">200M views &middot; 30 minutes ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/masha and the bear thumb.webp" alt="thumbnail" class="thumbnail">
+                <div class="video-time">14:00</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/masha-profile-pic.jpg" alt="profile-picture" class="profile-picture">
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">Masha and the Bear 💖🐶 HUG YOUR PET 🐶💖 Best episodes collection</p>
+                    <p class="author">Macharia and The Bear<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">30M views &middot; 4 years ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/girl-16-9.jpg" alt="thumbnail" class="thumbnail">
+                <div class="video-time">12:00</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/web news.jpg" alt="profile-picture" class="profile-picture">
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">Growing up as a lesbian and transgender girl in the Philipines-My Story</p>
+                    <p class="author">My Philipines Story-hii ni story ya Jaba<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">309B views &middot; 2 hours ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/masha and the bear thumb.webp" alt="thumbnail" class="thumbnail">
+                <div class="video-time">6:40</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/masha-profile-pic.jpg" alt="profile-picture" class="profile-picture">
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">Watch your Favorite Cartoon Today</p>
+                    <p class="author">Masaa and The Bear<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">19M views &middot; 4 years ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/MONKEYS (1).png" alt="thumbnail" class="thumbnail">
+                <div class="video-time">14:00</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/news-prof.jpg" alt="profile-picture" class="profile-picture">
+                    
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">BREAKING NEWS!!!MONKEYS RAZE DOWN A VILLAGE IN WANJOHI. Several of them are admitted
+                        at JM KARIUKI...
+                    </p>
+                    <p class="author">NBC News<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">200M views &middot; 30 minutes ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/masha and the bear thumb.webp" alt="thumbnail" class="thumbnail">
+                <div class="video-time">14:00</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/masha-profile-pic.jpg" alt="profile-picture" class="profile-picture">
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">Masha and the Bear 💖🐶 HUG YOUR PET 🐶💖 Best episodes collection</p>
+                    <p class="author">Macharia and The Bear<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">30M views &middot; 4 years ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/girl-16-9.jpg" alt="thumbnail" class="thumbnail">
+                <div class="video-time">12:00</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/web news.jpg" alt="profile-picture" class="profile-picture">
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">Growing up as a lesbian and transgender girl in the Philipines-My Story</p>
+                    <p class="author">My Philipines Story-hii ni story ya Jaba<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">309B views &middot; 2 hours ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/masha and the bear thumb.webp" alt="thumbnail" class="thumbnail">
+                <div class="video-time">6:40</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/masha-profile-pic.jpg" alt="profile-picture" class="profile-picture">
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">Watch your Favorite Cartoon Today</p>
+                    <p class="author">Masaa and The Bear<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">19M views &middot; 4 years ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/MONKEYS (1).png" alt="thumbnail" class="thumbnail">
+                <div class="video-time">14:00</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/news-prof.jpg" alt="profile-picture" class="profile-picture">
+                    
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">BREAKING NEWS!!!MONKEYS RAZE DOWN A VILLAGE IN WANJOHI. Several of them are admitted
+                        at JM KARIUKI...
+                    </p>
+                    <p class="author">NBC News<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">200M views &middot; 30 minutes ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/masha and the bear thumb.webp" alt="thumbnail" class="thumbnail">
+                <div class="video-time">14:00</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/masha-profile-pic.jpg" alt="profile-picture" class="profile-picture">
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">Masha and the Bear 💖🐶 HUG YOUR PET 🐶💖 Best episodes collection</p>
+                    <p class="author">Macharia and The Bear<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">30M views &middot; 4 years ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/girl-16-9.jpg" alt="thumbnail" class="thumbnail">
+                <div class="video-time">12:00</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/web news.jpg" alt="profile-picture" class="profile-picture">
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">Growing up as a lesbian and transgender girl in the Philipines-My Story</p>
+                    <p class="author">My Philipines Story-hii ni story ya Jaba<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">309B views &middot; 2 hours ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/masha and the bear thumb.webp" alt="thumbnail" class="thumbnail">
+                <div class="video-time">6:40</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/masha-profile-pic.jpg" alt="profile-picture" class="profile-picture">
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">Watch your Favorite Cartoon Today</p>
+                    <p class="author">Masaa and The Bear<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">19M views &middot; 4 years ago</p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview-container">
+            <div class="thumbnail-container">
+                <img src="images and logos/MONKEYS (1).png" alt="thumbnail" class="thumbnail">
+                <div class="video-time">14:00</div>
+            </div>
+            <div class="video-info">
+                <div class="profile-picture-div">
+                    <img src="images and logos/news-prof.jpg" alt="profile-picture" class="profile-picture">
+                    
+                </div>
+                <div class="video-stats-div">
+                    <p class="video-title">BREAKING NEWS!!!MONKEYS RAZE DOWN A VILLAGE IN WANJOHI. Several of them are admitted
+                        at JM KARIUKI...
+                    </p>
+                    <p class="author">NBC News<i class="fa fa-check-circle"></i></p>
+                    <p class="view-data">200M views &middot; 30 minutes ago</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+   
+    </body>
+</html>
